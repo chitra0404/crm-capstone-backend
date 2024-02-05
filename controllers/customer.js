@@ -39,7 +39,7 @@ const randomString =
 Math.random().toString(36).substring(2, 15) +
 Math.random().toString(36).substring(2, 15);
 
-const link = `https://crm-frontend-qfow.vercel.app/acc/${randomString}`;
+const link = `https://crm-frontend-c97i.vercel.app/acc/${randomString}`;
 
 const sub = "Account Activation"
 
@@ -129,7 +129,7 @@ module.exports.PasswordResetLink = async (req, res) => {
         res.status(200).json({message:"mail sent"});
 
         //sending email for resetting
-        const link = `https://crm-frontend-qfow.vercel.app/reset/${randomString}`;
+        const link = `https://crm-frontend-c97i.vercel.app/reset/${randomString}`;
 
         const sub = "Reset password"
 
