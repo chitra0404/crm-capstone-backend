@@ -12,9 +12,10 @@ require('dotenv').config();
 const app=express();
 
 app.use(cors());
+
 app.use(express.json());
-app.use(route);
- app.use("/user",userroute);
+app.use(route,cors());
+ app.use("/user",cors(),userroute);
 app.use("/mag",manager);
 app.use("/product",product);
 app.use("/order",order);
