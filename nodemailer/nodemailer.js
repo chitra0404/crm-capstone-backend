@@ -29,7 +29,7 @@ module.exports.NodeMailer = async (token, User_mail, link, res, sub) => {
     await transporter.sendMail({
       from: Email_Id,
       to: User_mail,
-      subject: `Url Shortener ${sub} link`,
+      subject: ` ${sub} link`,
       text: link,
     });
 
