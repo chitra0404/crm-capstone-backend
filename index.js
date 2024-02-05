@@ -14,8 +14,7 @@ const app=express();
 app.use(cors());
 app.use(cors({
   origin: 'https://crm2-1b04.onrender.com',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+ 
 }));
 
 
