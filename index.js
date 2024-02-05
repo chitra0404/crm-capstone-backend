@@ -12,10 +12,17 @@ require('dotenv').config();
 const app=express();
 
 app.use(cors());
+app.use(cors({
+  origin: 'https://crm2-1b04.onrender.com',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+
 
 app.use(express.json());
-app.use(route,cors());
- app.use("/user",cors(),userroute);
+app.use(route);
+ app.use("/user",userroute);
 app.use("/mag",manager);
 app.use("/product",product);
 app.use("/order",order);
@@ -34,6 +41,3 @@ mongoose.connect(url)
 
 const port=process.env.PORT;
 app.listen(port,()=>console.log("listening to the port"));
-app.use(cors({
-  origin: 'https://crm-frontend-rust.vercel.app'
-}));
