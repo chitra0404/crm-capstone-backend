@@ -34,3 +34,6 @@ mongoose.connect(url)
 
 const port=process.env.PORT;
 app.listen(port,()=>console.log("listening to the port"));
+app.use(cors({
+  origin: 'https://crm-frontend-rust.vercel.app'
+}));
