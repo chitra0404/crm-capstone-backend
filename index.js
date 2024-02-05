@@ -13,7 +13,7 @@ const app=express();
 
 app.use(cors());
 app.use(cors({
-  origin: 'https://crm2-1b04.onrender.com',
+  origin: 'https://crm-frontend-rust.vercel.app',
  
 }));
 
