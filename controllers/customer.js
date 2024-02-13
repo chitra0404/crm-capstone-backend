@@ -39,7 +39,7 @@ const randomString =
 Math.random().toString(36).substring(2, 15) +
 Math.random().toString(36).substring(2, 15);
 
-const link = `https://crm-frontend-rust.vercel.app/acc/${randomString}`;
+const link = `http://localhost:5173/acc/${randomString}`;
 
 const sub = "Account Activation"
 
