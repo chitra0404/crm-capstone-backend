@@ -94,7 +94,7 @@ module.exports.Login=async(req,res)=>{
         if(!passwordmatch){
             return res.status(409).json({message:"invalid password"}); }
             if(customer.account_activated){
-                const token=jwt.sign({ customerId:customer._id},process.env.N_key,{expiresIn:'24hr'})
+                const token=jwt.sign({ customerId:customer._id},process.env.TOKEN_SECRET,{expiresIn:'24hr'})
                 return res.status(200).json({token});
             }
             else{
