@@ -55,32 +55,27 @@ NodeMailer(randomString, email, link,  sub);
 }
 
 module.exports.AccountActivation = async (req, res) => {
-
     try {
-        console.log(req.params.id);
-        const tok  = req.params.id;
-console.log("token",tok);
-        const user = await User.findOne({ token_activate_account: tok });
-
-        if (!user) {
-            return res.status(400).json({ Message: "User not found or Activated account" });
-        }
-
-        user.isVerified = true
-
-        user.token_activate_account = "Account Activated";
-
-        const updated = await User.findByIdAndUpdate(user._id, user);
-
-        if (updated) {
-            return res.status(201).json({ Message: "Account activated" });
-        }
+      // Find a customer based on the desired condition (e.g., email, username, etc.)
+      const customer = await User.findOne({ token_activate_account: { $ne: "Account Activated" } });
+  
+      if (!customer) {
+        return res.status(400).json({ Message: "No user found to activate the account" });
+      }
+  
+      customer.isVerified = true;
+      customer.token_activate_account = "Account Activated";
+  
+      const updated = await customer.save();
+  
+      if (updated) {
+        return res.status(201).json({ Message: "Account activated" });
+      }
+    } catch (err) {
+      console.error('Error activating account', err);
+      return res.status(500).json({ Message: "Internal server error" });
     }
-    catch (err) {
-        console.error('Error signing up user', err);
-        return res.status(400).json({ Message: "Internal server error" })
-    }
-}
+  };
 module.exports.Login=async(req,res)=>{
     const {email,password}=req.body;
     const user=await User.findOne({email});
