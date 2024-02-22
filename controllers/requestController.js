@@ -1,4 +1,5 @@
 const Request=require('../models/getrequest');
+const {REQUEST_STATUS} =require('../config/request_status');
 
 const {nanoid}=require('nanoid');
 
@@ -40,10 +41,14 @@ module.exports.deleteRequest=async(req,res)=>{
 
 module.exports.updateRequest=async(req,res)=>{
     try {
-        const tickets = await Request.findById(req.params.id).exec();
-        tickets.set(req.body);
-        const result = await tickets.save();
-        res.send(result);
+        const result = await Request.findOneAndUpdate({ requestID: req.body.requestID}, 
+          {request_status : req.body.request_status },{new:true});
+         
+          console.log(result.requestID);
+          if(result) {
+            await result.save();
+            return res.status(200).json({ message : "request status updated"});
+           }
       } catch (error) {
         res.status(500).send(error);
       }

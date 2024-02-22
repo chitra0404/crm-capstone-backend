@@ -47,10 +47,10 @@ module.exports.createLead= async(req,res) => {
 
   module.exports.updateLead=async (req, res) => {
     try {
-      const leads = await Lead.findById(req.params.id).exec();
-      leads.set(req.body);
-      const result = await leads.save();
-      res.send(result);
+      const leads = await Lead.findOneAndUpdate({ leadid: req.body.leadid},{lead_status : req.body.lead_status },{new:true});
+      // leads.set(req.body);
+      // const result = await leads.save();
+      return res.status(200).json({ message : "lead status updated"});
     } catch (error) {
       res.status(500).send(error);
     }

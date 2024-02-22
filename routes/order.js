@@ -4,7 +4,7 @@ const USER_ROLES=require('../role');
 const {handleCreateOrder,cancelOrder,updateOrderStatus,monthlyOrders,getRevenue,getOrders,getProductSold}=require('../controllers/productControllers')
 
 
-router.post('/getorders',  getOrders )
+router.get('/getorders',  getOrders )
 
 router.post('/create-order',    handleCreateOrder )
 router.post('/cancel-order',   cancelOrder )

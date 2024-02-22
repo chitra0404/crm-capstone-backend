@@ -8,6 +8,7 @@ const manager=require('./routes/manager')
 const admin=require('./routes/admin')
 const product=require('./routes/product');
 const order=require('./routes/order');
+const contact=require('./routes/contact')
 require('dotenv').config();
 const app=express();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(route);
  app.use("/user",userroute);
 app.use("/mag",manager);
+app.use("/contact",contact);
 app.use("/product",product);
 app.use("/order",order);
 app.use("/ad",admin);

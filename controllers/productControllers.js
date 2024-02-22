@@ -23,12 +23,11 @@ module.exports.getAvailableProduct=async(req,res)=>{
 module.exports. getOrders = async(req,res) => {
   console.log("get orders,")
   try{
-       if(! req.body)
-       return res.status(401).json({message : "Invalid Credentials"});
+     
 
-       const orderHist = await Order.find(req.body).sort({order_date: -1})
+       const orderHist = await Order.find().sort({order_date: -1})
        if(orderHist.length > 0) {
-        return res.status(200).json({ ordersList : orderHist});
+        return res.status(200).json({ orderHist});
        }
        else {
         return res.status(404).json({message : "No orders found"});
@@ -259,7 +258,7 @@ module.exports. monthlyOrders = async(req,res) => {
       try {
         console.log(orderItems);
       for( let i of orderItems) {
-        console.log(i.qty);
+        console.log("product_stock",i.product_id);
         const result = await Product.findOneAndUpdate(
           { "product_id" : i.product_id},
           { $inc : { product_stock: -(i.qty) }},

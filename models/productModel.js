@@ -51,6 +51,11 @@ const productSchema=mongoose.Schema({
         enum: product_status_values,
         default: PRODUCT_STATUS.Available,
     },
+    qty:{
+        type: Number,
+        required: true,
+        default: 5,  
+    }
     
 })
 

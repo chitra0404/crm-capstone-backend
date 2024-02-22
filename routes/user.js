@@ -1,5 +1,5 @@
 const router=require('express').Router();
-const {getUser,Register,Login,AccountActivation}=require("../controllers/userController")
+const {getUser,Register,Login,AccountActivation,PasswordResetLink,PasswordUpdate}=require("../controllers/userController")
 const verify=require("./verify")
 
 
@@ -8,6 +8,8 @@ router.get("/",getUser);
 router.post("/register",Register);
 router.patch('/activate/:id', AccountActivation );
 router.post("/login",Login)
+router.put('/forgotPassword',PasswordResetLink)
+router.patch('/PasswordReset/:id',PasswordUpdate)
 
 // router.post('/activate-mail', resendActivation)
 // router.post('/forgotpwd', forgotPassword)

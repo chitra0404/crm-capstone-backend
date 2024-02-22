@@ -36,6 +36,9 @@ isVerified:{
 token_activate_account:{
     type:String
 },
+token_reset_password:{
+    type:String
+},
 acc_create:{
     type: Date,
     default: Date.now

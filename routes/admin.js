@@ -15,10 +15,10 @@ router.post("/createreq",createRequest);
 router.get("/get",getRequest);
 router.patch("/update",updateRequest);
 router.delete("/delete/:id",deleteRequest);
-router.post("/createLead",verify,createLead);
+router.post("/createLead",createLead);
 router.get("/getlead",getLead);
-router.delete("/del",deleteLead);
-router.patch("/updateLead/:id",updateLead);
+router.delete("/del/:id",deleteLead);
+router.patch("/updateLead",updateLead);
 // router.post("/login",verify,Login);
 
 

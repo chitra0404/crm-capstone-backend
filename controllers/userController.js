@@ -42,7 +42,7 @@ module.exports.Register=async(req,res)=>{
 Math.random().toString(36).substring(2, 15) +
 Math.random().toString(36).substring(2, 15);
 
-const link = `https://crm-frontend-rust.vercel.app/user/acc/${randomString}`;
+const link = `http://localhost:5173/user/acc/${randomString}`;
 
 const sub = "Account Activation"
 
@@ -126,7 +126,7 @@ module.exports.PasswordResetLink = async (req, res) => {
         res.status(200).json({message:"mail sent"});
 
         //sending email for resetting
-        const link = `http://localhost:5173/reset/${randomString}`;
+        const link = `http://localhost:5173/user/reset/${randomString}`;
 
         const sub = "Reset password"
 
@@ -142,8 +142,9 @@ module.exports.PasswordUpdate = async (req, res) => {
         const resetToken = req.params.id;
         console.log(resetToken);
         const { password } = req.body;
+        console.log(password);
         const matchedUser = await User.findOne({ token_reset_password:  resetToken });
-      
+      console.log(matchedUser)
         if (matchedUser === null || matchedUser.token_reset_password === "") {
             return res
                 .status(400)
@@ -151,6 +152,7 @@ module.exports.PasswordUpdate = async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         matchedUser.password = hashedPassword;
+        console.log(matchedUser.password);
         matchedUser.token_reset_password = `Password Updated on ${new Date()}`;
 
 
