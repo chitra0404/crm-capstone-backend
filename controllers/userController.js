@@ -42,7 +42,7 @@ module.exports.Register=async(req,res)=>{
 Math.random().toString(36).substring(2, 15) +
 Math.random().toString(36).substring(2, 15);
 
-const link = `http://localhost:5173/user/acc/${randomString}`;
+const link = `https://crm-frontend-7w5t.vercel.app/user/acc/${randomString}`;
 
 const sub = "Account Activation"
 
@@ -126,7 +126,7 @@ module.exports.PasswordResetLink = async (req, res) => {
         res.status(200).json({message:"mail sent"});
 
         //sending email for resetting
-        const link = `http://localhost:5173/user/reset/${randomString}`;
+        const link = `https://crm-frontend-7w5t.vercel.app/user/reset/${randomString}`;
 
         const sub = "Reset password"
 
