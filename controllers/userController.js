@@ -42,9 +42,9 @@ module.exports.Register=async(req,res)=>{
 Math.random().toString(36).substring(2, 15) +
 Math.random().toString(36).substring(2, 15);
 
-const link = `https://crm-frontend-7w5t.vercel.app/user/acc/${randomString}`;
+const link = `https://crm-frontend-7w5t.vercel.app/user/acc`;
 
-const sub = "Account Activation"
+const sub = "Account Activationn"
 
 NodeMailer(randomString, email, link,  sub);
     } catch (err) {
