@@ -42,7 +42,7 @@ module.exports.Register=async(req,res)=>{
 Math.random().toString(36).substring(2, 15) +
 Math.random().toString(36).substring(2, 15);
 
-const link = `https://crm-frontend-oulhot00f-chitras-projects-2d4240da.vercel.app/user/acc/${randomString}`;
+const link = `https://crm-frontend-blush.vercel.app/user/acc/${randomString}`;
 
 const sub = "Account Activation"
 
