@@ -129,7 +129,7 @@ module.exports.PasswordResetLink = async (req, res) => {
         res.status(200).json({message:"mail sent"});
 
         //sending email for resetting
-        const link = `https://crm-frontend-c97i.vercel.app/reset/${randomString}`;
+        const link = `https://crm-frontend-blush.vercel.app/reset/${randomString}`;
 
         const sub = "Reset password"
 
