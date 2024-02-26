@@ -81,6 +81,24 @@ console.log("token",tok);
         return res.status(400).json({ Message: "Internal server error" })
     }
 }
+
+module.exports.checkActivation = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findOne({ token_activate_account: id });
+  
+      if (!user) {
+        return res.status(400).json({ Message: "User not found or account already activated" });
+      }
+  
+      const activated = user.isVerified;
+  
+      return res.status(200).json({ activated });
+    } catch (err) {
+      console.error('Error checking account activation', err);
+      return res.status(500).json({ Message: "Internal server error" });
+    }
+  };
 module.exports.Login=async(req,res)=>{
     const {email,password}=req.body;
     const user=await User.findOne({email});
