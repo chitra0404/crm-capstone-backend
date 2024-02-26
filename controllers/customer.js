@@ -81,6 +81,23 @@ module.exports.AccountActivation = async (req, res) => {
         return res.status(400).json({ Message: "Internal server error" })
     }
 }
+module.exports.checkActivation = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const customer = await Customer.findOne({ token_activate_account: id });
+  
+      if (!customer) {
+        return res.status(400).json({ Message: "User not found or account already activated" });
+      }
+  
+      const activated = customer.account_activated;
+  
+      return res.status(200).json({ activated });
+    } catch (err) {
+      console.error('Error checking account activation', err);
+      return res.status(500).json({ Message: "Internal server error" });
+    }
+  };
 
 
 
