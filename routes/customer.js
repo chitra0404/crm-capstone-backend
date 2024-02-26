@@ -1,5 +1,5 @@
 const router=require("express").Router();
-const {getCustomer,Signup,Login,AccountActivation,PasswordResetLink,PasswordUpdate}=require('../controllers/customer')
+const {getCustomer,Signup,Login,AccountActivation,PasswordResetLink,PasswordUpdate,checkActivation}=require('../controllers/customer')
 
 
 router.get('/users',getCustomer)
