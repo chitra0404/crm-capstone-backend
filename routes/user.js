@@ -6,7 +6,7 @@ const verify=require("./verify")
 
 router.get("/",getUser);
 router.post("/register",Register);
-router.patch('/activate', AccountActivation );
+router.patch('/activate/:id', AccountActivation );
 router.post("/login",Login)
 router.put('/forgotPassword',PasswordResetLink)
 router.patch('/PasswordReset/:id',PasswordUpdate)
